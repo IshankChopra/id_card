@@ -6,15 +6,21 @@ void main() {
   ));
 }
 
-class NinjaCard extends StatelessWidget {
+class NinjaCard extends StatefulWidget {
   const NinjaCard({Key? key}) : super(key: key);
 
+  @override
+  State<NinjaCard> createState() => _NinjaCardState();
+}
+
+class _NinjaCardState extends State<NinjaCard> {
+  int ninjalevel=0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.grey[900],
         appBar: AppBar(
-          title: const Text("Ninja ID Card"),
+          title: const Text("Ishank ID Card"),
           centerTitle: true,
           backgroundColor: Colors.grey[850],
           elevation: 0.0,
@@ -59,7 +65,8 @@ class NinjaCard extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 10.0,),
-              const Text("8",
+               Text(
+                "$ninjalevel",
                 style: TextStyle(
                   color: Colors.amber,
                   fontWeight: FontWeight.bold,
@@ -101,7 +108,19 @@ class NinjaCard extends StatelessWidget {
               )
             ],
           ),
-        )
+        ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            ninjalevel+=1;
+          });
+        },
+        backgroundColor: Colors.white,
+        child: Icon(
+          Icons.add,
+          color: Colors.grey,
+        ),
+      ),
     );
   }
 }
